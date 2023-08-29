@@ -27,14 +27,14 @@ The Secrets Website is a small project built with Node.js and Express. It provid
 
 ## Installation
 
-1. Clone the repository:git clone 
+1. Clone the repository:git clone https://github.com/gkirat/express-node-password-authentication-site
 2. Navigate to the project directory:cd 
 3. Install dependencies using npm: npm install
 
 
 ## Usage
 
-1. Run the application:npm start
+1. Run the application: npm start
 
 2. Open your web browser and navigate to `http://localhost:3000`.
 
