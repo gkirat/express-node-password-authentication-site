@@ -6,16 +6,20 @@ import express from "express";
 import bodyParser from "body-parser";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const port = 3000;
 var userAuth = false;
+const password = "Node";
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
-function passCheck(req, res, next) {            //This is a custom middleware to check password
+//This is a custom middleware to check password
+function passCheck(req, res, next) {
   const pass = req.body.password;
-  if (pass === "guri") {
+  if (pass === password) {
     userAuth = true;
   }
   next();
@@ -29,7 +33,7 @@ app.get("/", (req, res) => {
 });
 app.post("/check", (req, res) => {
   if (userAuth === true) {
-    res.sendFile(__dirnaame + "/public/secret.html");
+    res.sendFile(__dirname + "/public/secret.html");
   } else {
     res.sendFile(__dirname + "/public/index.html");
   }
@@ -37,9 +41,3 @@ app.post("/check", (req, res) => {
 app.listen(port, () => {
   console.log(`The port is at port ${port}`);
 });
-
-//   res.sendFile(__dirname + "/public/secret.html");
-
-// else{
-//   res.sendFile(__dirname + "/public/index.html");
-// }
